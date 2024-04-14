@@ -27,11 +27,15 @@ if pioutil.is_pio_build():
 			"AtmelavrPlatform": "framework-arduino-avr"
 		}
 		platform_name = framewords[platform.__class__.__name__]
+
 	else:
 		platform_name = PackageSpec(platform_packages[0]).name
 
-	if platform_name in [ "usb-host-msc", "usb-host-msc-cdc-msc", "usb-host-msc-cdc-msc-2", "usb-host-msc-cdc-msc-3", "tool-stm32duino", "biqu-bx-workaround", "main" ]:
+	if platform_name in [ "usb-host-msc", "usb-host-msc-cdc-msc", "usb-host-msc-cdc-msc-2", "usb-host-msc-cdc-msc-3", "tool-stm32duino", "biqu-bx-workaround", "main", "2"]:
 		platform_name = "framework-arduinoststm32"
+
+	print("Platform name: " + platform_name)
+	print("Packages: " + str(PackageSpec(platform_packages[0])))
 
 	FRAMEWORK_DIR = platform.get_package_dir(platform_name)
 	assert os.path.isdir(FRAMEWORK_DIR)
